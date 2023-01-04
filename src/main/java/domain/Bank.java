@@ -5,7 +5,7 @@ import domain.services.CustomerService;
 public class Bank {
 
 	CustomerService customerService;
-	private Printer printer;
+	private final Printer printer;
 
 	public Bank(CustomerService customerService, Printer printer) {
 		this.customerService = customerService;
@@ -16,7 +16,7 @@ public class Bank {
 		return new Branch(branchName, customerService);
 	}
 
-	public String printCustomers(String branchName) {
+	public String printCustomers(Branch branchName) {
 		return printer.printBranchCustomers(branchName);
 	}
 }

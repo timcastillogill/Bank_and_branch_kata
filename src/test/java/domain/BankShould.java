@@ -18,6 +18,9 @@ class BankShould {
 
 	@Mock
 	Printer printer;
+
+	@Mock
+	Branch branch;
 	private Bank bank;
 
 	@BeforeEach
@@ -32,10 +35,9 @@ class BankShould {
 
 	@Test
 	public void print_a_list_of_customers_for_a_related_branch() {
-		String branchName = "Stroud";
-		bank.printCustomers(branchName);
+		bank.printCustomers(branch);
 
-		verify(printer).printBranchCustomers(branchName);
+		verify(printer).printBranchCustomers(branch);
 	}
 
 }

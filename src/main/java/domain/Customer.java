@@ -3,14 +3,12 @@ package domain;
 import java.util.ArrayList;
 
 public class Customer {
-	private String name;
-	private int initialBalance;
+	private final String name;
 
-	ArrayList<Transactions> transactions = new ArrayList<Transactions>();
+	ArrayList<Transactions> transactions = new ArrayList<>();
 
 	public Customer(String name, int initialBalance) {
 		this.name = name;
-		this.initialBalance = initialBalance;
 		addTransaction(initialBalance);
 	}
 
@@ -20,5 +18,9 @@ public class Customer {
 
 	public ArrayList<Transactions> allTransactions() {
 		return transactions;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

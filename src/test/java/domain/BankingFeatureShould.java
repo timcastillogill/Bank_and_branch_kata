@@ -13,6 +13,6 @@ public class BankingFeatureShould {
 		Branch stroudBranch = bank.createBranch("Stroud");
 		stroudBranch.addCustomer("Tim", 1000);
 		stroudBranch.addCustomer("Hassan", 2000);
-		assertThat(bank.printCustomers("Stroud")).isEqualTo("Tim, Hassan");
+		assertThat(bank.printCustomers(stroudBranch)).isEqualTo("Tim, Hassan");
 	}
 }
