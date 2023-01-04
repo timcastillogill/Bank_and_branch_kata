@@ -2,10 +2,13 @@ package domain;
 
 import domain.services.CustomerService;
 
+import java.util.ArrayList;
+
 public class Branch {
 
 	private final String branchName;
 	private final CustomerService customerService;
+	ArrayList<Customer> branchCustomers = new ArrayList<>();
 
 	public Branch(String branchName, CustomerService customerService) {
 		this.branchName = branchName;
@@ -13,6 +16,11 @@ public class Branch {
 	}
 
 	public void addCustomer(String customerName, int initialTransactionAmount) {
-		customerService.createCustomer(customerName, initialTransactionAmount);
+		Customer newCustomer = customerService.createCustomer(customerName, initialTransactionAmount);
+		branchCustomers.add(newCustomer);
+	}
+
+	public ArrayList<Customer> allCustomers() {
+		return branchCustomers;
 	}
 }

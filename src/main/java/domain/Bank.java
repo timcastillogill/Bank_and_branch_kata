@@ -5,9 +5,11 @@ import domain.services.CustomerService;
 public class Bank {
 
 	CustomerService customerService;
+	private Printer printer;
 
-	public Bank(CustomerService customerService) {
+	public Bank(CustomerService customerService, Printer printer) {
 		this.customerService = customerService;
+		this.printer = printer;
 	}
 
 	public Branch createBranch(String branchName) {
@@ -15,6 +17,6 @@ public class Bank {
 	}
 
 	public String printCustomers(String branchName) {
-		throw new UnsupportedOperationException();
+		return printer.printBranchCustomers(branchName);
 	}
 }
