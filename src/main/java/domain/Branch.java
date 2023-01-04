@@ -15,12 +15,26 @@ public class Branch {
 		this.customerService = customerService;
 	}
 
-	public void addCustomer(String customerName, int initialTransactionAmount) {
+	public void addCustomer(String customerName, double initialTransactionAmount) {
 		Customer newCustomer = customerService.createCustomer(customerName, initialTransactionAmount);
 		branchCustomers.add(newCustomer);
 	}
 
 	public ArrayList<Customer> allCustomers() {
 		return branchCustomers;
+	}
+
+	public void depositTransaction(Customer customer, double deposit) {
+		findCustomer(customer).addTransaction(deposit);
+	}
+
+	private Customer findCustomer(Customer customer) {
+		for (int i = 0; i < branchCustomers.size(); i++) {
+			Customer checkedCustomer = branchCustomers.get(i);
+			if (checkedCustomer.getName().equals(customer.getName())) {
+				return checkedCustomer;
+			}
+		}
+		return null;
 	}
 }

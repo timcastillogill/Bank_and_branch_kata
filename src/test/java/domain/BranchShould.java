@@ -14,6 +14,8 @@ class BranchShould {
 
 	@Mock
 	CustomerService customerService;
+	@Mock
+	Customer customer;
 	private Branch branch;
 
 	@BeforeEach
@@ -24,10 +26,20 @@ class BranchShould {
 	@Test
 	public void create_a_new_instance_of_a_customer() {
 		String name = "Tim";
-		int balance = 1000;
+		double balance = 1000;
 		branch.addCustomer(name, balance);
 
 		verify(customerService).createCustomer(name, balance);
 		assertThat(branch.allCustomers().size()).isEqualTo(1);
+	}
+
+	@Test
+	public void add_a_transaction_to_a_customer_of_that_branch() {
+		branch.addCustomer("Hassan", 1000);
+		Customer newCustomer = new Customer("Hassan", 1000);
+
+		double deposit = 500.23;
+		branch.depositTransaction(newCustomer, deposit);
+		verify(customer).addTransaction(deposit);
 	}
 }

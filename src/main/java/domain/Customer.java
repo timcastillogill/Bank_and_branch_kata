@@ -7,12 +7,12 @@ public class Customer {
 
 	ArrayList<Transactions> transactions = new ArrayList<>();
 
-	public Customer(String name, int initialBalance) {
+	public Customer(String name, double initialBalance) {
 		this.name = name;
 		addTransaction(initialBalance);
 	}
 
-	public void addTransaction(int amount) {
+	public void addTransaction(double amount) {
 		transactions.add(new Transactions(amount));
 	}
 
