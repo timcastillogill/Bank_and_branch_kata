@@ -31,6 +31,7 @@ class BankShould {
 	@Test
 	public void create_a_new_branch_for_that_bank() {
 		assertThat(bank.createBranch("Stroud")).isInstanceOf(Branch.class);
+		assertThat(bank.allBranches().size()).isEqualTo(1);
 	}
 
 	@Test
