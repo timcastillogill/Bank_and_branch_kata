@@ -2,9 +2,9 @@ package domain;
 
 public class Transactions {
 
-	private final int amount;
+	private final double amount;
 
-	public Transactions(int amount) {
+	public Transactions(double amount) {
 		this.amount = amount;
 	}
 }
