@@ -41,4 +41,8 @@ public class Branch {
 		}
 		return false;
 	}
+
+	public String getBranchName() {
+		return branchName;
+	}
 }

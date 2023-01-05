@@ -4,6 +4,7 @@ import domain.services.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,6 +40,17 @@ class BankShould {
 		bank.printCustomers(branch);
 
 		verify(printer).printBranchCustomers(branch);
+	}
+
+	@Test
+	public void add_a_customer_to_a_branch_of_that_bank() {
+		String name = "Hassan";
+		double initialBalance = 1000.00;
+		bank.createBranch("Stroud");
+		given(branch.getBranchName()).willReturn("Stroud");
+
+		bank.addCustomer(name, initialBalance, branch);
+		verify(branch).addCustomer(name, initialBalance);
 	}
 
 }
