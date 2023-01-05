@@ -16,7 +16,7 @@ public class Branch {
 	}
 
 	public void addCustomer(String customerName, double initialTransactionAmount) {
-		Customer newCustomer = customerService.createCustomer(customerName, initialTransactionAmount);
+		Customer newCustomer = new Customer(customerName, initialTransactionAmount);
 		branchCustomers.add(newCustomer);
 	}
 
@@ -25,16 +25,20 @@ public class Branch {
 	}
 
 	public void depositTransaction(Customer customer, double deposit) {
-		findCustomer(customer).addTransaction(deposit);
-	}
+		if (checkCustomerMemberOfBranch(customer)) {
+			customer.addTransaction(deposit);
+		} else {
+			throw new RuntimeException();
+		}
+}
 
-	private Customer findCustomer(Customer customer) {
+	private boolean checkCustomerMemberOfBranch(Customer customer) {
 		for (int i = 0; i < branchCustomers.size(); i++) {
 			Customer checkedCustomer = branchCustomers.get(i);
 			if (checkedCustomer.getName().equals(customer.getName())) {
-				return checkedCustomer;
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 }

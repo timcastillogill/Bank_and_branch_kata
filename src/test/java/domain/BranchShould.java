@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -36,10 +38,11 @@ class BranchShould {
 	@Test
 	public void add_a_transaction_to_a_customer_of_that_branch() {
 		branch.addCustomer("Hassan", 1000);
-		Customer newCustomer = new Customer("Hassan", 1000);
+		given(customer.getName()).willReturn("Hassan");
 
 		double deposit = 500.23;
-		branch.depositTransaction(newCustomer, deposit);
+		branch.depositTransaction(customer, deposit);
 		verify(customer).addTransaction(deposit);
 	}
+
 }
