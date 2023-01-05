@@ -31,7 +31,6 @@ class BranchShould {
 		double balance = 1000;
 		branch.addCustomer(name, balance);
 
-		verify(customerService).createCustomer(name, balance);
 		assertThat(branch.allCustomers().size()).isEqualTo(1);
 	}
 

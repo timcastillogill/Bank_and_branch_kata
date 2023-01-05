@@ -33,8 +33,7 @@ public class Branch {
 }
 
 	private boolean checkCustomerMemberOfBranch(Customer customer) {
-		for (int i = 0; i < branchCustomers.size(); i++) {
-			Customer checkedCustomer = branchCustomers.get(i);
+		for (Customer checkedCustomer : branchCustomers) {
 			if (checkedCustomer.getName().equals(customer.getName())) {
 				return true;
 			}

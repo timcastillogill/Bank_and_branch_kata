@@ -40,8 +40,7 @@ public class Bank {
 	}
 
 	private boolean checkBranchIsMemberOfThisBank(Branch branch) {
-		for (int i = 0; i < branches.size(); i++) {
-			Branch checkedBranch = branches.get(i);
+		for (Branch checkedBranch : branches) {
 			if (checkedBranch.getBranchName().equals(branch.getBranchName())) {
 				return true;
 			}
@@ -51,21 +50,3 @@ public class Bank {
 
 
 }
-
-//	public void depositTransaction(Customer customer, double deposit) {
-//		if (checkCustomerMemberOfBranch(customer)) {
-//			customer.addTransaction(deposit);
-//		} else {
-//			throw new RuntimeException();
-//		}
-//	}
-
-//	private boolean checkCustomerMemberOfBranch(Customer customer) {
-//		for (int i = 0; i < branchCustomers.size(); i++) {
-//			Customer checkedCustomer = branchCustomers.get(i);
-//			if (checkedCustomer.getName().equals(customer.getName())) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
